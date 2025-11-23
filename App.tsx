@@ -127,7 +127,7 @@ function App() {
             <Layers className="w-8 h-8 text-blue-600" />
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
-            Excel Merger Pro
+            Excel Merger
           </h1>
           <p className="text-slate-500 max-w-lg mx-auto">
             같은 열(Column) 구조를 가진 여러 엑셀 파일을 업로드하세요. <br/>
