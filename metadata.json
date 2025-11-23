@@ -1,0 +1,5 @@
+{
+  "name": "Excel Merger Pro",
+  "description": "같은 열 구조를 가진 여러 엑셀 파일을 손쉽게 하나로 병합하는 도구입니다.",
+  "requestFramePermissions": []
+}
