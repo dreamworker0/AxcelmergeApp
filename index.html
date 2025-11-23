@@ -2,6 +2,18 @@
 <html lang="ko" translate="no">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // 브라우저 확장 프로그램(DeepL, 번역기 등) 충돌 방지 패치
+      // 이미 정의된 Custom Element를 다시 정의할 때 발생하는 에러를 무시합니다.
+      const originalDefine = customElements.define;
+      customElements.define = function(name, constructor, options) {
+        if (!customElements.get(name)) {
+          originalDefine.call(customElements, name, constructor, options);
+        } else {
+          console.warn(`[Extension Compatibility] Custom element "${name}" is already defined. Ignoring re-definition.`);
+        }
+      };
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
     <title>Excel Merger Pro</title>
@@ -67,7 +79,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900 notranslate">
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
   </body>
