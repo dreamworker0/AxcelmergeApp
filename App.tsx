@@ -66,10 +66,6 @@ function App() {
 
       // Check others
       let hasError = false;
-      const updatedFiles = [...files]; // Copy to mutate locally before state update if needed, though we act on prev state in loop usually.
-      
-      // Since mergeExcelFiles does the heavy lifting, we can just call it directly.
-      // But to provide granular feedback, we might want to check structures first.
       
       for (let i = 1; i < files.length; i++) {
         try {
@@ -94,10 +90,6 @@ function App() {
 
       // If validation passed, proceed to merge
       const blob = await mergeExcelFiles(rawFiles);
-      
-      // Calculate total approximate rows (just for display, optional)
-      // Since readExcelFile reads everything, this might be redundant perf-wise, but good for UX.
-      // For MVP we just show success.
       
       setMergedResult({
         fileName: `merged_excel_${new Date().toISOString().slice(0, 10)}.xlsx`,
@@ -217,7 +209,7 @@ function App() {
               ) : (
                 <Button 
                   onClick={handleMerge} 
-                  disabled={files.length < 1} 
+                  disabled={files.length < 2} 
                   isLoading={isProcessing}
                   className="w-full sm:w-auto min-w-[140px]"
                 >
